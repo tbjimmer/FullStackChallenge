@@ -22,7 +22,7 @@ namespace FullStackChallenge
         }
 
         private static readonly HttpClient client = new HttpClient();
-        private string apiKey = "";
+        private string apiKey = "jlNxhawUwQxsyyzrfRiZMQ==op1mYDf70grXYgcL";
 
         int strikeCount = 0;
         string guessedLetters = "";
@@ -101,7 +101,6 @@ namespace FullStackChallenge
             response.EnsureSuccessStatusCode();
 
             string json = await response.Content.ReadAsStringAsync();
-            MessageBox.Show("API response:\n" + json); // TEMP for debugging
 
             int start = json.IndexOf("[\"") + 2;
             int end = json.IndexOf("\"]");
@@ -110,7 +109,6 @@ namespace FullStackChallenge
             {
                 secretWord = json.Substring(start, end - start).ToLower();
             }
-            MessageBox.Show("secretWord:\n" + secretWord); // TEMP for debugging
 
             updateWordDisplay();
         }
